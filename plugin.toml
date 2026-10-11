@@ -1,0 +1,43 @@
+[plugin]
+id = "netease_music"
+name = "网易云音乐"
+description = "网易云音乐点歌/播放/歌词/榜单/链接解析。移植自 AstrBot 插件 astrbot_plugin_neteasemusic（MIT），需配合 NeteaseCloudMusicApiEnhanced 服务使用。"
+short_description = "点歌 · 播放 · 歌词 · 榜单 · 链接解析"
+keywords = ["音乐", "点歌", "网易云", "music", "netease", "ncm", "播放", "歌词", "排行榜"]
+version = "0.4.0"
+type = "plugin"
+entry = "plugin.plugins.netease_music:NeteaseMusicPlugin"
+
+[plugin.author]
+name = "wbndm（原作）"
+
+[plugin.sdk]
+recommended = ">=0.1.0,<0.2.0"
+supported = ">=0.1.0,<0.3.0"
+
+[plugin.i18n]
+default_locale = "zh-CN"
+locales_dir = "i18n"
+
+[plugin_runtime]
+enabled = true
+auto_start = false
+
+[plugin.store]
+enabled = true
+
+[plugin.ui]
+enabled = true
+
+[[plugin.ui.panel]]
+id = "main"
+title = "网易云音乐"
+entry = "ui/panel.tsx"
+context = "main"
+permissions = ["state:read", "action:call"]
+
+[netease_music]
+api_base = "http://127.0.0.1:3000"
+quality = "auto"
+unblock = true
+cookie = ""
