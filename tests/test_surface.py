@@ -5,6 +5,7 @@ from __future__ import annotations
 import inspect
 import json
 import sys
+from importlib import import_module
 from pathlib import Path
 
 import pytest
@@ -15,8 +16,10 @@ if str(_REPO_ROOT) not in sys.path:
 
 pytest.importorskip("plugin.sdk.plugin")
 
-from plugin.plugins.netease_music import NeteaseMusicPlugin  # noqa: E402
-from plugin.sdk.plugin.llm_tool import LLM_TOOL_META_ATTR, LlmToolMeta  # noqa: E402
+NeteaseMusicPlugin = import_module("plugin.plugins.netease_music").NeteaseMusicPlugin
+_llm_tool_module = import_module("plugin.sdk.plugin.llm_tool")
+LLM_TOOL_META_ATTR = _llm_tool_module.LLM_TOOL_META_ATTR
+LlmToolMeta = _llm_tool_module.LlmToolMeta
 
 _EXPECTED_TOOLS = {
     "search_songs",
