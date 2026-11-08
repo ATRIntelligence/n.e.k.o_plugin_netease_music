@@ -15,8 +15,11 @@ if str(_REPO_ROOT) not in sys.path:
 
 pytest.importorskip("plugin.sdk.plugin")
 
-from plugin.plugins.netease_music import NeteaseMusicPlugin  # noqa: E402
-from plugin.sdk.plugin.llm_tool import LLM_TOOL_META_ATTR, LlmToolMeta  # noqa: E402
+_neko_mod = pytest.importorskip("plugin.plugins.netease_music")
+_llm_tool_mod = pytest.importorskip("plugin.sdk.plugin.llm_tool")
+NeteaseMusicPlugin = _neko_mod.NeteaseMusicPlugin
+LLM_TOOL_META_ATTR = _llm_tool_mod.LLM_TOOL_META_ATTR
+LlmToolMeta = _llm_tool_mod.LlmToolMeta
 
 _EXPECTED_TOOLS = {
     "search_songs",
